@@ -9,25 +9,50 @@
     <style>
         /* Cart Page Styles */
         .cart-container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
         }
 
         .cart-item {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             padding: 10px 0;
             border-bottom: 1px solid #ddd;
         }
 
         .cart-item h3 {
             margin: 0;
+            font-size: 1.2em;
         }
 
         .cart-item .price {
             font-weight: bold;
             color: #333;
+            font-size: 1.1em;
+        }
+
+        .remove-btn {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 6px 12px;
+            font-size: 0.9em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .remove-btn:hover {
+            background-color: #cc0000;
         }
 
         .total {
@@ -38,13 +63,16 @@
         }
 
         .checkout-btn {
-            display: inline-block;
+            display: block;
+            text-align: center;
             background-color: #ff7b00;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
             font-weight: 600;
             border-radius: 5px;
+            margin: 20px auto 0;
+            width: 200px;
         }
 
         .checkout-btn:hover {
@@ -69,23 +97,41 @@
 
     <script>
         // Load the cart from localStorage and display the items
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartItemsContainer = document.getElementById('cart-items');
         let totalPrice = 0;
 
-        cart.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('cart-item');
-            itemElement.innerHTML = `
-                <h3>${item.name}</h3>
-                <span class="price">$${item.price.toFixed(2)}</span>
-            `;
-            cartItemsContainer.appendChild(itemElement);
-            totalPrice += item.price;
-        });
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = ""; // Clear the cart display
+            totalPrice = 0; // Reset total price
 
-        // Display the total price
-        document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+            } else {
+                cart.forEach((item, index) => {
+                    const itemElement = document.createElement('div');
+                    itemElement.classList.add('cart-item');
+                    itemElement.innerHTML = `
+                        <h3>${item.name}</h3>
+                        <span class="price">$${item.price.toFixed(2)}</span>
+                        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                    totalPrice += item.price;
+                });
+            }
+
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1); // Remove the item from the cart array
+            localStorage.setItem('cart', JSON.stringify(cart)); // Update local storage
+            updateCartDisplay(); // Refresh cart display
+        }
+
+        // Initial cart display update
+        updateCartDisplay();
     </script>
 
 </body>
