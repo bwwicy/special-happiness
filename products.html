@@ -3,25 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - ProductStore</title>
+    <title>Our Products | Product Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="tabthing.png" type="image/png">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #333;
-        }
-
-        /* Navigation Styles */
+        /* Navigation Styling */
         nav ul {
             list-style-type: none;
             display: flex;
             justify-content: center;
             padding: 0;
-            background-color: transparent;
-            padding: 15px 0;
         }
 
         nav ul li {
@@ -39,35 +31,29 @@
             text-decoration: underline;
         }
 
-        /* Product Listing Styles */
+        /* Product Styles */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        .product-listings h2 {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
         .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            padding: 20px;
         }
 
         .product-card {
             border: 1px solid #ddd;
             padding: 20px;
             text-align: center;
-            background-color: #131313;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease-in-out;
+            width: 300px;
+            box-sizing: border-box;
+            margin: 20px;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
         }
 
         .product-card:hover {
@@ -76,21 +62,31 @@
 
         .product-image-container {
             position: relative;
-            margin-bottom: 10px;
+            width: 100%;
+            height: auto;
         }
 
-        .product-front,
+        .product-front, 
         .product-back {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 8px;
+            transition: opacity 0.3s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
-        .product-summary {
-            font-size: 1em;
-            margin: 10px 0;
-            color: #555;
+        .product-back {
+            opacity: 0;
+        }
+
+        .product-card:hover .product-front {
+            opacity: 0;
+        }
+
+        .product-card:hover .product-back {
+            opacity: 1;
         }
 
         .price {
@@ -101,119 +97,80 @@
 
         .btn {
             background-color: #ff7b00;
-            color: #141414;
+            color: white;
             padding: 10px 15px;
             text-decoration: none;
             font-weight: 600;
             border-radius: 5px;
             display: inline-block;
-            margin-top: 10px;
         }
 
         .btn:hover {
             background-color: #e56a00;
         }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #131313;
-            margin-top: 30px;
-        }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+
     <header>
-        <div class="logo-container" style="text-align: center; padding: 10px;">
-            <img src="logo.png" alt="Product Store Logo" class="logo">
-        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Products Section -->
-    <main>
+    <div class="container">
         <section class="product-listings">
-            <div class="container">
-                <h2>Our Products</h2>
-                <p class="product-description" style="text-align: center;">Browse through our curated selection of high-quality products. Choose the one that fits your needs.</p>
-                <div class="products">
-                    <!-- Product 1 -->
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="product1front.jpg" alt="Product 1 Front" class="product-front">
-                            <img src="product1back.jpg" alt="Product 1 Back" class="product-back">
-                        </div>
-                        <h3>Product 1</h3>
-                        <p class="price">$29.99</p>
-                        <p class="product-summary">This is a great product for daily use.</p>
-                        <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 1', 29.99)">Buy Now</a>
+            <h2>Our Products</h2>
+            <div class="products">
+                
+                <!-- Product 1 -->
+                <div class="product-card" onclick="location.href='product1.html';">
+                    <div class="product-image-container">
+                        <img src="product1.1.png" alt="Product 1 Front" class="product-front">
+                        <img src="product1.2.png" alt="Product 1 Back" class="product-back">
                     </div>
-
-                    <!-- Product 2 -->
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="product2front.jpg" alt="Product 2 Front" class="product-front">
-                            <img src="product2back.jpg" alt="Product 2 Back" class="product-back">
-                        </div>
-                        <h3>Product 2</h3>
-                        <p class="price">$49.99</p>
-                        <p class="product-summary">A premium quality product that stands out.</p>
-                        <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 2', 49.99)">Buy Now</a>
-                    </div>
-
-                    <!-- Product 3 -->
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="product3front.jpg" alt="Product 3 Front" class="product-front">
-                            <img src="product3back.jpg" alt="Product 3 Back" class="product-back">
-                        </div>
-                        <h3>Product 3</h3>
-                        <p class="price">$69.99</p>
-                        <p class="product-summary">This high-end product is made for excellence.</p>
-                        <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 3', 69.99)">Buy Now</a>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="product4front.jpg" alt="Product 4 Front" class="product-front">
-                            <img src="product4back.jpg" alt="Product 4 Back" class="product-back">
-                        </div>
-                        <h3>Product 4</h3>
-                        <p class="price">$79.99</p>
-                        <p class="product-summary">A revolutionary product for advanced users.</p>
-                        <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 4', 79.99)">Buy Now</a>
-                    </div>
+                    <h3>Product 1</h3>
+                    <p class="price">$29.99</p>
                 </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" onclick="location.href='product2.html';">
+                    <div class="product-image-container">
+                        <img src="product2.1.png" alt="Product 2 Front" class="product-front">
+                        <img src="product2.2.png" alt="Product 2 Back" class="product-back">
+                    </div>
+                    <h3>Product 2</h3>
+                    <p class="price">$49.99</p>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" onclick="location.href='product3.html';">
+                    <div class="product-image-container">
+                        <img src="product3.1.png" alt="Product 3 Front" class="product-front">
+                        <img src="product3.2.png" alt="Product 3 Back" class="product-back">
+                    </div>
+                    <h3>Product 3</h3>
+                    <p class="price">$69.99</p>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" onclick="location.href='product4.html';">
+                    <div class="product-image-container">
+                        <img src="product4.1.png" alt="Product 4 Front" class="product-front">
+                        <img src="product4.2.png" alt="Product 4 Back" class="product-back">
+                    </div>
+                    <h3>Product 4</h3>
+                    <p class="price">$79.99</p>
+                </div>
+
             </div>
         </section>
-    </main>
+    </div>
 
-    <!-- JavaScript for Adding to Cart -->
-    <script>
-        function addToCart(productName, productPrice) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || []; // Get the existing cart from localStorage
-            cart.push({ name: productName, price: productPrice }); // Add the selected item
-            localStorage.setItem('cart', JSON.stringify(cart)); // Save the updated cart back to localStorage
-            window.location.href = 'cart.html'; // Redirect to the cart page
-        }
-    </script>
-
-    <!-- Footer Section -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 ProductStore. All rights reserved.</p>
-        </div>
-    </footer>
 </body>
 </html>
