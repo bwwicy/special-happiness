@@ -3,63 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product 4 | Product Store</title>
+    <title>Product 1 | Product Store</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="tabthing.png" type="image/png">
     <style>
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
         }
 
-        .product-image-container {
+        .carousel-container {
             position: relative;
             width: 100%;
-            max-width: 500px;
+            overflow: hidden;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .product-front, 
-        .product-back {
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-images img {
             width: 100%;
-            display: block;
-            transition: opacity 0.3s ease-in-out;
+            max-width: 600px;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .carousel-btns {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
         }
 
-        .product-back {
-            opacity: 0;
+        .carousel-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
         }
 
-        .product-image-container:hover .product-front {
-            opacity: 0;
-        }
-
-        .product-image-container:hover .product-back {
-            opacity: 1;
-        }
-
-        .price {
-            font-size: 1.5em;
-            font-weight: bold;
+        .product-details {
+            margin-top: 20px;
         }
 
         .size-selector {
-            margin: 15px 0;
+            margin-top: 10px;
         }
 
         .btn {
             background-color: #ff7b00;
             color: white;
-            padding: 10px 20px;
-            font-size: 1em;
-            border: none;
-            cursor: pointer;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: 600;
             border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
         }
 
         .btn:hover {
@@ -68,42 +77,67 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
     <div class="container">
         <h1>Product 4</h1>
-        <p>A revolutionary product for advanced users.</p>
-
-        <div class="product-image-container">
-            <img src="product4.1.png" alt="Product 4 Front" class="product-front">
-            <img src="product4.2.png" alt="Product 4 Back" class="product-back">
-        </div>
-
         <p class="price">$79.99</p>
 
-        <div class="size-selector">
-            <label for="size">Select Size:</label>
-            <select id="size">
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-                <option>XL</option>
-            </select>
-        </div>
+        <!-- Carousel -->
 
-        <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 4', 79.99)">Buy Now</a>
+            <div class="carousel-btns">
+                <button class="carousel-btn" id="prevBtn">&#10094;</button>
+                <button class="carousel-btn" id="nextBtn">&#10095;</button>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-images">
+                    <img src="product4.1.png" alt="Product 4 Image 1">
+                    <img src="product4.2.png" alt="Product 4 Image 2">
+                    <img src="product4.3.png" alt="Product 4 Image 3">
+                    <img src="product4.4.png" alt="Product 4 Image 4">
+                </div>
+            </div>
+            
+        <!-- Product Details -->
+        <div class="product-details">
+            <p>A great product for daily use with high-quality materials.</p>
+
+            <!-- Size Selector -->
+            <label for="size">Choose Size:</label>
+            <select id="size" class="size-selector">
+                <option value="S">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+                <option value="XL">Extra Large</option>
+            </select>
+
+            <!-- Buy Now Button -->
+            <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 4', 79.99)">Buy Now</a>
+        </div>
     </div>
 
     <script>
+        let currentIndex = 0;
+        const images = document.querySelector('.carousel-images');
+        const totalImages = images.children.length;
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        }
+
+        function showPrevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            images.style.transform = `translateX(${offset}%)`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', showNextImage);
+        document.getElementById('prevBtn').addEventListener('click', showPrevImage);
+
         function addToCart(productName, productPrice) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.push({ name: productName, price: productPrice });

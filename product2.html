@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products | Product Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Product 1 | Product Store</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="tabthing.png" type="image/png">
     <style>
-        /* Carousel Styles */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
         .carousel-container {
             position: relative;
             width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
             overflow: hidden;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .carousel-images {
             display: flex;
-            transition: transform 0.5s ease; 
+            transition: transform 0.5s ease-in-out;
         }
 
-        .carousel-image {
-            min-width: 100%;
+        .carousel-images img {
+            width: 100%;
+            max-width: 600px;
             height: auto;
             object-fit: cover;
         }
@@ -46,20 +52,12 @@
             font-size: 20px;
         }
 
-        /* Product Styles */
-        .product-card {
-            border: 1px solid #ddd;
-            padding: 20px;
-            text-align: center;
-            width: 300px;
-            box-sizing: border-box;
-            margin: 20px auto;
+        .product-details {
+            margin-top: 20px;
         }
 
-        .price {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #333;
+        .size-selector {
+            margin-top: 10px;
         }
 
         .btn {
@@ -70,82 +68,82 @@
             font-weight: 600;
             border-radius: 5px;
             display: inline-block;
+            margin-top: 10px;
         }
 
         .btn:hover {
             background-color: #e56a00;
         }
-
-        .size-selector {
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <div class="container">
-        <section class="product-listings">
-            <h2>Our Products</h2>
-            <div class="products">
-                
-                <div class="product-card">
-                    <div class="carousel-container">
-                        <div class="carousel-images" id="carousel2">
-                            <img src="product2.1.png" alt="Product 2 Image 1" class="carousel-image">
-                            <img src="product2.2.png" alt="Product 2 Image 2" class="carousel-image">
-                            <img src="product2.3.png" alt="Product 2 Image 3" class="carousel-image">
-                            <img src="product2.4.png" alt="Product 2 Image 4" class="carousel-image">
-                        </div>
-                        <div class="carousel-btns">
-                            <button class="carousel-btn" onclick="prevSlide(2)">&#10094;</button>
-                            <button class="carousel-btn" onclick="nextSlide(2)">&#10095;</button>
-                        </div>
-                    </div>
-                    <h3>Product 2</h3>
-                    <p class="price">$49.99</p>
-                    <p class="product-summary">Premium quality product.</p>
-                    <select class="size-selector">
-                        <option>Select Size</option>
-                        <option>Small</option>
-                        <option>Medium</option>
-                        <option>Large</option>
-                    </select>
-                    <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 2', 49.99)">Buy Now</a>
+        <h1>Product 2</h1>
+        <p class="price">$49.99</p>
+
+        <!-- Carousel -->
+        <div class="carousel-container">
+            <div class="carousel-container">
+                <div class="carousel-images">
+                    <img src="product2.1.png" alt="Product 2 Image 1">
+                    <img src="product2.2.png" alt="Product 2 Image 2">
+                    <img src="product2.3.png" alt="Product 2 Image 3">
+                    <img src="product2.4.png" alt="Product 2 Image 4">
                 </div>
-
-                <!-- Add similar sections for Product 3 and Product 4 -->
-
             </div>
-        </section>
+            <div class="carousel-btns">
+                <button class="carousel-btn" id="prevBtn">&#10094;</button>
+                <button class="carousel-btn" id="nextBtn">&#10095;</button>
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-details">
+            <p>A great product for daily use with high-quality materials.</p>
+
+            <!-- Size Selector -->
+            <label for="size">Choose Size:</label>
+            <select id="size" class="size-selector">
+                <option value="S">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+                <option value="XL">Extra Large</option>
+            </select>
+
+            <!-- Buy Now Button -->
+            <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 2', 49.99)">Buy Now</a>
+        </div>
     </div>
 
     <script>
+        let currentIndex = 0;
+        const images = document.querySelector('.carousel-images');
+        const totalImages = images.children.length;
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        }
+
+        function showPrevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            images.style.transform = `translateX(${offset}%)`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', showNextImage);
+        document.getElementById('prevBtn').addEventListener('click', showPrevImage);
+
         function addToCart(productName, productPrice) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.push({ name: productName, price: productPrice });
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'cart.html';
-        }
-
-        function nextSlide(carouselId) {
-            let carousel = document.getElementById(`carousel${carouselId}`);
-            carousel.appendChild(carousel.firstElementChild);
-        }
-
-        function prevSlide(carouselId) {
-            let carousel = document.getElementById(`carousel${carouselId}`);
-            carousel.insertBefore(carousel.lastElementChild, carousel.firstElementChild);
         }
     </script>
 
