@@ -3,86 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products | Product Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <title>Product 4 | Product Store</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="tabthing.png" type="image/png">
     <style>
-        /* Carousel Styles */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            max-width: 300px;
+        .container {
+            max-width: 800px;
             margin: 0 auto;
-            overflow: hidden;
-        }
-
-        .carousel-images {
-            display: flex;
-            transition: transform 0.5s ease; 
-        }
-
-        .carousel-image {
-            min-width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-
-        .carousel-btns {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
-
-        .carousel-btn {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        /* Product Styles */
-        .product-card {
-            border: 1px solid #ddd;
             padding: 20px;
             text-align: center;
-            width: 300px;
-            box-sizing: border-box;
-            margin: 20px auto;
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .product-front, 
+        .product-back {
+            width: 100%;
+            display: block;
+            transition: opacity 0.3s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .product-back {
+            opacity: 0;
+        }
+
+        .product-image-container:hover .product-front {
+            opacity: 0;
+        }
+
+        .product-image-container:hover .product-back {
+            opacity: 1;
         }
 
         .price {
+            font-size: 1.5em;
             font-weight: bold;
-            font-size: 1.2em;
-            color: #333;
+        }
+
+        .size-selector {
+            margin: 15px 0;
         }
 
         .btn {
             background-color: #ff7b00;
             color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            font-weight: 600;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
             border-radius: 5px;
-            display: inline-block;
         }
 
         .btn:hover {
             background-color: #e56a00;
         }
-
-        .size-selector {
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
-
     <header>
         <nav>
             <ul>
@@ -95,32 +80,37 @@
     </header>
 
     <div class="container">
-        <section class="product-listings">
-            <h2>Our Products</h2>
-            <div class="products">
-                
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="carousel-container">
-                        <div class="carousel-images" id="carousel1">
-                            <img src="product1.1.png" alt="Product 1 Image 1" class="carousel-image">
-                            <img src="product1.2.png" alt="Product 1 Image 2" class="carousel-image">
-                            <img src="product1.3.png" alt="Product 1 Image 3" class="carousel-image">
-                            <img src="product1.4.png" alt="Product 1 Image 4" class="carousel-image">
-                        </div>
-                        <div class="carousel-btns">
-                            <button class="carousel-btn" onclick="prevSlide(1)">&#10094;</button>
-                            <button class="carousel-btn" onclick="nextSlide(1)">&#10095;</button>
-                        </div>
-                    </div>
-                    <h3>Product 1</h3>
-                    <p class="price">$29.99</p>
-                    <p class="product-summary">A great product for everyday use.</p>
-                    <select class="size-selector">
-                        <option>Select Size</option>
-                        <option>Small</option>
-                        <option>Medium</option>
-                        <option>Large</option>
-                    </select>
-                    <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 1', 29.99)">Buy Now</a>
-                </div>
+        <h1>Product 4</h1>
+        <p>A revolutionary product for advanced users.</p>
+
+        <div class="product-image-container">
+            <img src="product4.1.png" alt="Product 4 Front" class="product-front">
+            <img src="product4.2.png" alt="Product 4 Back" class="product-back">
+        </div>
+
+        <p class="price">$79.99</p>
+
+        <div class="size-selector">
+            <label for="size">Select Size:</label>
+            <select id="size">
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>XL</option>
+            </select>
+        </div>
+
+        <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 4', 79.99)">Buy Now</a>
+    </div>
+
+    <script>
+        function addToCart(productName, productPrice) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: productName, price: productPrice });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'cart.html';
+        }
+    </script>
+
+</body>
+</html>

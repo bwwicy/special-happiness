@@ -124,3 +124,28 @@
                     </select>
                     <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 1', 29.99)">Buy Now</a>
                 </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function addToCart(productName, productPrice) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: productName, price: productPrice });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'cart.html';
+        }
+
+        function nextSlide(carouselId) {
+            let carousel = document.getElementById(`carousel${carouselId}`);
+            carousel.appendChild(carousel.firstElementChild);
+        }
+
+        function prevSlide(carouselId) {
+            let carousel = document.getElementById(`carousel${carouselId}`);
+            carousel.insertBefore(carousel.lastElementChild, carousel.firstElementChild);
+        }
+    </script>
+
+</body>
+</html>
