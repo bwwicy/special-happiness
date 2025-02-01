@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products | Product Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="tabthing.png" type="image/png">
+    <style>
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease; 
+        }
+
+        .carousel-image {
+            min-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .carousel-btns {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        /* Product Styles */
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            box-sizing: border-box;
+            margin: 20px auto;
+        }
+
+        .price {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .btn {
+            background-color: #ff7b00;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #e56a00;
+        }
+
+        .size-selector {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="product-listings">
+            <h2>Our Products</h2>
+            <div class="products">
+                
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="carousel-container">
+                        <div class="carousel-images" id="carousel1">
+                            <img src="product1.1.png" alt="Product 1 Image 1" class="carousel-image">
+                            <img src="product1.2.png" alt="Product 1 Image 2" class="carousel-image">
+                            <img src="product1.3.png" alt="Product 1 Image 3" class="carousel-image">
+                            <img src="product1.4.png" alt="Product 1 Image 4" class="carousel-image">
+                        </div>
+                        <div class="carousel-btns">
+                            <button class="carousel-btn" onclick="prevSlide(1)">&#10094;</button>
+                            <button class="carousel-btn" onclick="nextSlide(1)">&#10095;</button>
+                        </div>
+                    </div>
+                    <h3>Product 1</h3>
+                    <p class="price">$29.99</p>
+                    <p class="product-summary">A great product for everyday use.</p>
+                    <select class="size-selector">
+                        <option>Select Size</option>
+                        <option>Small</option>
+                        <option>Medium</option>
+                        <option>Large</option>
+                    </select>
+                    <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 1', 29.99)">Buy Now</a>
+                </div>
