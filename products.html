@@ -30,60 +30,69 @@
                 <h2>Our Products</h2>
                 <p class="product-description">Browse through our curated selection of high-quality products. Choose the one that fits your needs.</p>
                 <div class="products">
-                    <!-- Product 1 -->
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="product1front.jpg" alt="Product 1 Image" class="product-image front">
-                            <img src="product1back.jpg" alt="Product 1 Hover Image" class="product-image back">
-                        </div>
-                        <h3>Product 1</h3>
-                        <p class="price">$199.99</p>
-                        <p class="product-summary">A high-quality product perfect for everyday use. Features great durability and modern design.</p>
-                        <a href="product1.html" class="btn">View Details</a>
-                    </div>
-        
-                    <!-- Product 2 -->
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="product2front.jpg" alt="Product 2 Image" class="product-image front">
-                            <img src="product2back.jpg" alt="Product 2 Hover Image" class="product-image back">
-                        </div>
-                        <h3>Product 2</h3>
-                        <p class="price">$299.99</p>
-                        <p class="product-summary">An excellent product with advanced features and superior quality.</p>
-                        <a href="product2.html" class="btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-        
+    <!-- Products Listing -->
+    <div class="container">
+        <section class="product-listings">
+            <h2>Our Products</h2>
+            <div class="products">
+                <!-- Product 1 -->
+<!-- Product 1 -->
+<div class="product-card">
+    <div class="product-image-container">
+        <img src="product1front.jpg" alt="Product 1 Front" class="product-front">
+        <img src="product1back.jpg" alt="Product 1 Back" class="product-back">
+    </div>
+    <h3>Product 1</h3>
+    <p class="price">$29.99</p>
+    <p class="product-summary">This is a great product for daily use.</p>
+    <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 1', 29.99)">Buy Now</a>
+</div>
 
-                    <!-- Product 3 -->
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="product3front.jpg" alt="Product 3 Image" class="product-image front">
-                            <img src="product3back.jpg" alt="Product 3 Hover Image" class="product-image back">
-                        </div>
-                        <h3>Product 3</h3>
-                        <p class="price">$399.99</p>
-                        <p class="product-summary">Premium quality with cutting-edge technology. Ideal for professionals.</p>
-                        <a href="product3.html" class="btn">View Details</a>
-                    </div>
+<!-- Product 2 -->
+<div class="product-card">
+    <div class="product-image-container">
+        <img src="product2front.jpg" alt="Product 2 Front" class="product-front">
+        <img src="product2back.jpg" alt="Product 2 Back" class="product-back">
+    </div>
+    <h3>Product 2</h3>
+    <p class="price">$49.99</p>
+    <p class="product-summary">A premium quality product that stands out.</p>
+    <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 2', 49.99)">Buy Now</a>
+</div>
 
-                    <!-- Product 4 -->
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="product4front.jpg" alt="Product 4 Image" class="product-image front">
-                            <img src="product4back.jpg" alt="Product 4 Hover Image" class="product-image back">
-                        </div>
-                        <h3>Product 4</h3>
-                        <p class="price">$149.99</p>
-                        <p class="product-summary">A budget-friendly option that doesn't compromise on quality. Great for casual users.</p>
-                        <a href="product4.html" class="btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+<!-- Product 3 -->
+<div class="product-card">
+    <div class="product-image-container">
+        <img src="product3front.jpg" alt="Product 3 Front" class="product-front">
+        <img src="product3back.jpg" alt="Product 3 Back" class="product-back">
+    </div>
+    <h3>Product 3</h3>
+    <p class="price">$69.99</p>
+    <p class="product-summary">This high-end product is made for excellence.</p>
+    <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 3', 69.99)">Buy Now</a>
+</div>
+
+<!-- Product 4 -->
+<div class="product-card">
+    <div class="product-image-container">
+        <img src="product4front.jpg" alt="Product 4 Front" class="product-front">
+        <img src="product4back.jpg" alt="Product 4 Back" class="product-back">
+    </div>
+    <h3>Product 4</h3>
+    <p class="price">$79.99</p>
+    <p class="product-summary">A revolutionary product for advanced users.</p>
+    <a href="javascript:void(0);" class="btn" onclick="addToCart('Product 4', 79.99)">Buy Now</a>
+</div>
+
+<script>
+    function addToCart(productName, productPrice) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || []; // Get the existing cart from localStorage
+        cart.push({ name: productName, price: productPrice }); // Add the selected item
+        localStorage.setItem('cart', JSON.stringify(cart)); // Save the updated cart back to localStorage
+        
+        window.location.href = 'cart.html'; // Redirect to the cart page
+    }
+</script>
 
     <!-- Footer Section -->
     <footer>
