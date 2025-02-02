@@ -345,7 +345,7 @@ footer p {
     position: relative;
     text-decoration: none;
     font-weight: 600;
-    color: #333;
+    color: #131313;
     font-size: 18px;
     padding-bottom: 5px; /* Space for underline */
 }
@@ -357,7 +357,7 @@ footer p {
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: lightblue; /* Change to your preferred color */
+    background-color: #131313; /* Change to your preferred color */
     transition: width 0.3s ease, left 0.3s ease;
 }
 
