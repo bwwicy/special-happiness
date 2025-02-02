@@ -13,7 +13,6 @@
             text-align: center;
             padding: 20px;
         }
-
         .carousel-container {
             position: relative;
             width: 100%;
@@ -21,19 +20,16 @@
             max-width: 600px;
             margin: 0 auto;
         }
-
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
         }
-
         .carousel-images img {
             width: 100%;
             max-width: 600px;
             height: auto;
             object-fit: cover;
         }
-
         .carousel-btns {
             position: absolute;
             top: 50%;
@@ -42,7 +38,6 @@
             justify-content: space-between;
             transform: translateY(-50%);
         }
-
         .carousel-btn {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
@@ -51,15 +46,12 @@
             cursor: pointer;
             font-size: 20px;
         }
-
         .product-details {
             margin-top: 20px;
         }
-
         .size-selector {
             margin-top: 10px;
         }
-
         .btn {
             background-color: #2df3c5;
             color: white;
@@ -69,42 +61,38 @@
             border-radius: 5px;
             display: inline-block;
             margin-top: 10px;
+            cursor: pointer;
         }
-
         .btn:hover {
             background-color: #43f1da;
         }
     </style>
 </head>
 <body>
-        <!-- Header -->
-        <header>
-            <div class="logo-container">
-                <a href="index.html"><img src="logo.png" alt="Product Store Logo" class="logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="products.html" class="nav-link">Products</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+    <header>
+        <div class="logo-container">
+            <a href="index.html"><img src="logo.png" alt="Product Store Logo" class="logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html" class="nav-link">Products</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <div class="container">
         <h1>BE UR SELF HOODIE</h1>
         <p class="price">$50.00</p>
 
-        <!-- Carousel -->
         <div class="carousel-container">
-            <div class="carousel-container">
-                <div class="carousel-images">
-                    <img src="product1.1.png" alt="Product 1 Image 1">
-                    <img src="product1.2.png" alt="Product 1 Image 2">
-                    <img src="product1.3.png" alt="Product 1 Image 3">
-                    <img src="product1.4.png" alt="Product 1 Image 4">
-                </div>
+            <div class="carousel-images">
+                <img src="product1.1.png" alt="Product Image 1" id="product-image">
+                <img src="product1.2.png" alt="Product Image 2">
+                <img src="product1.3.png" alt="Product Image 3">
+                <img src="product1.4.png" alt="Product Image 4">
             </div>
             <div class="carousel-btns">
                 <button class="carousel-btn" id="prevBtn">&#10094;</button>
@@ -112,11 +100,8 @@
             </div>
         </div>
 
-        <!-- Product Details -->
         <div class="product-details">
             <p>A great product for daily use with high-quality materials.</p>
-
-            <!-- Size Selector -->
             <label for="size">Choose Size:</label>
             <select id="size" class="size-selector">
                 <option value="S">Small</option>
@@ -124,9 +109,7 @@
                 <option value="L">Large</option>
                 <option value="XL">Extra Large</option>
             </select>
-
-            <!-- Buy Now Button -->
-            <a href="javascript:void(0);" class="btn" onclick="addToCart('BE UR SELF HOODIE', 50.00)">Buy Now</a>
+            <button class="btn" onclick="addToCart('BE UR SELF HOODIE', 50.00)">Buy Now</button>
         </div>
     </div>
 
@@ -134,32 +117,33 @@
         let currentIndex = 0;
         const images = document.querySelector('.carousel-images');
         const totalImages = images.children.length;
-
+        const productImage = document.getElementById('product-image');
+        
         function showNextImage() {
             currentIndex = (currentIndex + 1) % totalImages;
             updateCarousel();
         }
-
         function showPrevImage() {
             currentIndex = (currentIndex - 1 + totalImages) % totalImages;
             updateCarousel();
         }
-
         function updateCarousel() {
             const offset = -currentIndex * 100;
             images.style.transform = `translateX(${offset}%)`;
+            productImage.src = images.children[currentIndex].src;
         }
-
         document.getElementById('nextBtn').addEventListener('click', showNextImage);
         document.getElementById('prevBtn').addEventListener('click', showPrevImage);
-
+        
         function addToCart(productName, productPrice) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ name: productName, price: productPrice });
+            let selectedSize = document.getElementById('size').value;
+            let productImageSrc = productImage.src;
+            
+            cart.push({ name: productName, price: productPrice, size: selectedSize, image: productImageSrc });
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'cart.html';
         }
     </script>
-
 </body>
 </html>
