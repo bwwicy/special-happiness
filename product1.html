@@ -109,7 +109,7 @@
                 <option value="L">Large</option>
                 <option value="XL">Extra Large</option>
             </select>
-            <button class="btn" onclick="addToCart('BE UR SELF HOODIE', 50.00)">Buy Now</button>
+            <button class="btn" onclick="addToCart()">Buy Now</button>
         </div>
     </div>
 
@@ -135,12 +135,12 @@
         document.getElementById('nextBtn').addEventListener('click', showNextImage);
         document.getElementById('prevBtn').addEventListener('click', showPrevImage);
         
-        function addToCart(productName, productPrice) {
+        function addToCart() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             let selectedSize = document.getElementById('size').value;
-            let productImageSrc = productImage.src;
+            let productImageSrc = document.querySelector('.carousel-images img').src;
             
-            cart.push({ name: productName, price: productPrice, size: selectedSize, image: productImageSrc });
+            cart.push({ name: 'BE UR SELF HOODIE', price: 50.00, size: selectedSize, image: productImageSrc });
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'cart.html';
         }
