@@ -162,7 +162,7 @@ header nav ul li a {
 
 .product-card h3 {
     font-size: 1.9em;
-    color: #ff6f00;
+    color: #00c6ff;
     margin-bottom: 15px;
     font-weight: 600;
 }
@@ -181,7 +181,7 @@ header nav ul li a {
 
 .product-card .btn {
     padding: 14px 30px;
-    background-color: #ff6f00; /* Bold orange button */
+    background-color: #49c69b; /* Bold orange button */
     color: #fff;
     font-size: 1.1em;
     border-radius: 30px;
@@ -193,7 +193,7 @@ header nav ul li a {
 }
 
 .product-card .btn:hover {
-    background-color: #e65c00;
+    background-color: #35be99;
     transform: translateY(-3px);
 }
 
@@ -306,14 +306,14 @@ footer p {
 /* Product Card Text */
 .product-card h3 {
     font-size: 1.9em;
-    color: #ff6f00;
+    color: #00c6ff;
     margin-bottom: 15px;
     font-weight: 600;
 }
 
 .product-card .price {
     font-size: 1.6em;
-    color: #00c6ff;
+    color: #181818;
     margin-bottom: 15px;
 }
 
@@ -325,7 +325,7 @@ footer p {
 
 .product-card .btn {
     padding: 14px 30px;
-    background-color: #ff6f00; /* Bold orange button */
+    background-color: #00c6ff; /* Bold orange button */
     color: #fff;
     font-size: 1.1em;
     border-radius: 30px;
@@ -337,7 +337,7 @@ footer p {
 }
 
 .product-card .btn:hover {
-    background-color: #e65c00;
+    background-color: #35be99;
     transform: translateY(-3px);
 } 
 /* Underline effect on hover */
