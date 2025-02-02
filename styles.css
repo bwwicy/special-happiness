@@ -345,3 +345,28 @@ footer p {
     background-color: #e65c00;
     transform: translateY(-3px);
 } 
+/* Underline effect on hover */
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    font-size: 18px;
+    padding-bottom: 5px; /* Space for underline */
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ff7b00; /* Change to your preferred color */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
