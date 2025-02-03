@@ -74,38 +74,69 @@
         .btn:hover {
             background-color: #50c9b9;
         }
+
+        /* Cart Icon */
+        .cart-container {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 18px;
+            color: white;
+        }
+
+        .cart-container a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .cart-count {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 14px;
+            position: absolute;
+            top: -5px;
+            right: -10px;
+        }
+
     </style>
 </head>
 <body>
-        <!-- Header -->
-        <header>
-            <div class="logo-container">
-                <a href="index.html"><img src="logo.png" alt="Product Store Logo" class="logo"></a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="products.html" class="nav-link">Products</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <a href="index.html"><img src="logo.png" alt="Product Store Logo" class="logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html" class="nav-link">Products</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Cart Icon -->
+        <div class="cart-container">
+            <a href="cart.html">
+                🛒 Cart <span class="cart-count">0</span>
+            </a>
+        </div>
+    </header>
 
     <div class="container">
         <h1>TOO MUCH TO THINK HOODIE</h1>
         <p class="price">$50.00</p>
-        
 
         <!-- Carousel -->
         <div class="carousel-container">
-            <div class="carousel-container">
-                <div class="carousel-images">
-                    <img src="product3.1.png" alt="Product 3 Image 1">
-                    <img src="product3.2.png" alt="Product 3 Image 2">
-                    <img src="product3.3.png" alt="Product 3 Image 3">
-                    <img src="product3.4.png" alt="Product 3 Image 4">
-                </div>
+            <div class="carousel-images">
+                <img src="product3.1.png" alt="Product 3 Image 1">
+                <img src="product3.2.png" alt="Product 3 Image 2">
+                <img src="product3.3.png" alt="Product 3 Image 3">
+                <img src="product3.4.png" alt="Product 3 Image 4">
             </div>
             <div class="carousel-btns">
                 <button class="carousel-btn" id="prevBtn">&#10094;</button>
@@ -132,6 +163,7 @@
     </div>
 
     <script>
+        // Carousel Functionality
         let currentIndex = 0;
         const images = document.querySelector('.carousel-images');
         const totalImages = images.children.length;
@@ -154,12 +186,24 @@
         document.getElementById('nextBtn').addEventListener('click', showNextImage);
         document.getElementById('prevBtn').addEventListener('click', showPrevImage);
 
+        // Cart Functionality
         function addToCart(productName, productPrice) {
+            let size = document.getElementById("size").value;
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ name: productName, price: productPrice });
+
+            cart.push({ name: productName, price: productPrice, size: size });
             localStorage.setItem('cart', JSON.stringify(cart));
+
+            updateCartCount();
             window.location.href = 'cart.html';
         }
+
+        function updateCartCount() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.querySelector('.cart-count').textContent = cart.length;
+        }
+
+        document.addEventListener("DOMContentLoaded", updateCartCount);
     </script>
 
 </body>
