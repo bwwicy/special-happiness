@@ -124,7 +124,7 @@
             </select>
 
             <!-- Buy Now Button -->
-            <a href="javascript:void(0);" class="btn" onclick="addToCart('BUNNY HOODIE', 80.00)">Buy Now</a>
+            <a href="javascript:void(0);" class="btn" onclick="addToCart()">Buy Now</a>
         </div>
     </div>
 
@@ -151,12 +151,14 @@
         document.getElementById('nextBtn').addEventListener('click', showNextImage);
         document.getElementById('prevBtn').addEventListener('click', showPrevImage);
 
-        // Add to Cart functionality
-        function addToCart(productName, productPrice) {
+        function addToCart() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.push({ name: productName, price: productPrice });
+            let selectedSize = document.getElementById('size').value;
+            let productImageSrc = images.children[currentIndex].src;
+
+            cart.push({ name: 'BUNNY HOODIE', price: 80.00, size: selectedSize, image: productImageSrc });
             localStorage.setItem('cart', JSON.stringify(cart));
-            window.location.href = 'cart.html'; // Navigate to cart page
+            window.location.href = 'cart.html';
         }
     </script>
 </body>
