@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUNNY HOODIE | HENDASSA</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="tabthing.ico" type="image/png">
+    <link rel="icon" href="tabthing.ico" type="image/x-icon">
     <style>
         .container {
             max-width: 800px;
@@ -25,6 +25,8 @@
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            white-space: nowrap;
+            width: 400%; /* Ensures all images fit in a row */
         }
 
         .carousel-images img {
@@ -32,6 +34,7 @@
             max-width: 600px;
             height: auto;
             object-fit: cover;
+            flex: 0 0 100%;
         }
 
         .carousel-btns {
@@ -73,6 +76,30 @@
 
         .btn:hover {
             background-color: #34e294;
+        }
+
+        header {
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            max-width: 150px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
