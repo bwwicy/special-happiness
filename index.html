@@ -150,8 +150,8 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="products.html" class="nav-link">Products</a></li>
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li><a href="products.html" class="nav-link">PRODUCTS</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
@@ -159,17 +159,7 @@
     </header>
 
     <!-- Carousel Section -->
-    <div class="carousel-container">
-        <div class="carousel-images">
-            <img src="product4.3.png" alt="Carousel Image 1" class="carousel-image">
-            <img src="product3.2.png" alt="Carousel Image 2" class="carousel-image">
-            <img src="product2.1.png" alt="Carousel Image 3" class="carousel-image">
-        </div>
-        <div class="carousel-btns">
-            <button class="carousel-btn" id="prevBtn">&#10094;</button>
-            <button class="carousel-btn" id="nextBtn">&#10095;</button>
-        </div>
-    </div>
+C
 
     <!-- Products Listing -->
     <div class="container">
@@ -239,30 +229,54 @@ function addToCart(name, price, image) {}
     </footer>
 
     <script>
-        let currentIndex = 0;
-        const images = document.querySelectorAll('.carousel-image');
-        const totalImages = images.length;
+let currentIndex = 0;
+const images = document.querySelectorAll('.carousel-image');
+const totalImages = images.length;
 
+function showNextImage() {
+    if (currentIndex < totalImages - 1) {
+        currentIndex++;
+        updateCarousel();
+    }
+}
 
-        function showNextImage() {
-            currentIndex = (currentIndex + 1) % totalImages;
-            updateCarousel();
-        }
+function showPrevImage() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+    }
+}
 
-        // Show the previous image in the carousel
-        function showPrevImage() {
-            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-            updateCarousel();
-        }
+function updateCarousel() {
+    const offset = -currentIndex * 100; // Move the images horizontally
+    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+}
 
-        // Update the display
-        function updateCarousel() {
-            const offset = -currentIndex * 100; // Move the images horizontally
-            document.querySelector('.carousel-images').style.transform = translateX(${offset}%);
-        }
+// Disable buttons at boundaries
+function updateButtons() {
+    document.getElementById('prevBtn').disabled = currentIndex === 0;
+    document.getElementById('nextBtn').disabled = currentIndex === totalImages - 1;
+}
 
-        document.getElementById('nextBtn').addEventListener('click', showNextImage);
-        document.getElementById('prevBtn').addEventListener('click', showPrevImage);
+// Hook into existing updateCarousel to also update buttons
+function updateCarouselWithButtons() {
+    updateCarousel();
+    updateButtons();
+}
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+    showNextImage();
+    updateButtons();
+});
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+    showPrevImage();
+    updateButtons();
+});
+
+// Initialize button states
+updateButtons();
+
     </script>
 
 </body>
