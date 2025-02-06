@@ -365,3 +365,110 @@ footer p {
     width: 100%;
     left: 0;
 }
+/* General styles for the contact form */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-section p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Label styling */
+label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Input and Textarea styling */
+input[type="text"],
+input[type="email"],
+textarea {
+    font-family: 'Poppins', sans-serif;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #333;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+/* Button styling */
+.btn {
+    background-color: #333;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+/* Contact details styling */
+.contact-section p:last-of-type {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 10px;
+    }
+
+    .contact-section h2 {
+        font-size: 36px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
