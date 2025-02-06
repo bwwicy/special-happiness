@@ -138,9 +138,10 @@
             background-color: #333;
             color: white;
         }
-        /* Dropdown Menu Styles */
+/* Dropdown Menu Styles */
 .dropdown {
     position: relative;
+    z-index: 1000; /* Ensures the dropdown is on the top layer */
 }
 
 .dropdown-menu {
@@ -155,8 +156,10 @@
     width: 200px;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Keep the dropdown above other content */
 }
 
+/* Dropdown links styling */
 .dropdown-menu li {
     padding: 10px 20px;
 }
@@ -173,8 +176,9 @@
     border-radius: 5px;
 }
 
-/* Show dropdown on hover */
-.dropdown:hover .dropdown-menu {
+/* Ensure dropdown stays open when hovering over it */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
     display: block;
 }
 
