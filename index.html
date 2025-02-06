@@ -14,6 +14,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
+            overflow: hidden;
         }
 
         .carousel-images {
@@ -64,7 +65,6 @@
             color: #fff;
             font-size: 18px;
         }
-
 
         /* Product Listing Styles */
         .container {
@@ -138,8 +138,7 @@
             background-color: #333;
             color: white;
         }
-
-</style>
+    </style>
 </head>
 <body>
 
@@ -159,69 +158,74 @@
     </header>
 
     <!-- Carousel Section -->
-C
+    <div class="carousel-container">
+        <div class="carousel-images">
+            <img src="product1.2.png" alt="Product 1" class="carousel-image">
+            <img src="product2.4.png" alt="Product 2" class="carousel-image">
+            <img src="product3.2.png" alt="Product 3" class="carousel-image">
+            <img src="product4.1.png" alt="Product 4" class="carousel-image">
+        </div>
+        <div class="carousel-btns">
+            <button class="carousel-btn" id="prevBtn">&#10094;</button>
+            <button class="carousel-btn" id="nextBtn">&#10095;</button>
+        </div>
+    </div>
 
     <!-- Products Listing -->
     <div class="container">
         <section class="product-listings">
             <h2>Our Products</h2>
             <div class="products">
-<!-- Product 1 -->
-<div class="product-card">
-    <div class="product-image-container">
-        <img src="product1.2.png" alt="Product 1 Front" class="product-front">
-        <img src="product1.1.png" alt="Product 1 Back" class="product-back">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="product1.2.png" alt="Product 1 Front" class="product-front">
+                        <img src="product1.1.png" alt="Product 1 Back" class="product-back">
+                    </div>
+                    <h3>BE UR SELF HOODIE</h3>
+                    <p class="price">$50.00</p>
+                    <p class="product-summary">This is a great product for daily use.</p>
+                    <a href="product1.html" class="btn">View Details</a>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="product2.4.png" alt="Product 2 Front" class="product-front">
+                        <img src="product2.1.png" alt="Product 2 Back" class="product-back">
+                    </div>
+                    <h3>RISE AND SHINE HOODIE</h3>
+                    <p class="price">$50.00</p>
+                    <p class="product-summary">A premium quality product that stands out.</p>
+                    <a href="product2.html" class="btn">View Details</a>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="product3.2.png" alt="Product 3 Front" class="product-front">
+                        <img src="product3.1.png" alt="Product 3 Back" class="product-back">
+                    </div>
+                    <h3>TOO MUCH TO THINK HOODIE</h3>
+                    <p class="price">$50.00</p>
+                    <p class="product-summary">This high-end product is made for excellence.</p>
+                    <a href="product3.html" class="btn">View Details</a>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="product4.1.png" alt="Product 4 Front" class="product-front">
+                        <img src="product4.2.png" alt="Product 4 Back" class="product-back">
+                    </div>
+                    <h3>BUNNY HOODIE</h3>
+                    <p class="price">$80.00</p>
+                    <p class="product-summary">A revolutionary product for advanced users.</p>
+                    <a href="product4.html" class="btn">View Details</a>
+                </div>
+            </div>
+        </section>
     </div>
-    <h3>BE UR SELF HOODIE</h3>
-    <p class="price">$50.00</p>
-    <p class="product-summary">This is a great product for daily use.</p>
-    <a href="product1.html" class="btn">View Details</a>
-</div>
-
-<!-- Product 2 -->
-<div class="product-card">
-    <div class="product-image-container">
-        <img src="product2.4.png" alt="Product 2 Front" class="product-front">
-        <img src="product2.1.png" alt="Product 2 Back" class="product-back">
-    </div>
-    <h3>RISE AND SHINE HOODIE</h3>
-    <p class="price">$50.00</p>
-    <p class="product-summary">A premium quality product that stands out.</p>
-    <a href="product2.html" class="btn">View Details</a>
-</div>
-
-<!-- Product 3 -->
-<div class="product-card">
-    <div class="product-image-container">
-        <img src="product3.2.png" alt="Product 3 Front" class="product-front">
-        <img src="product3.1.png" alt="Product 3 Back" class="product-back">
-    </div>
-    <h3>TOO MUCH TO THINK HOODIE</h3>
-    <p class="price">$50.00</p>
-    <p class="product-summary">This high-end product is made for excellence.</p>
-    <a href="product3.html" class="btn">View Details</a>
-</div>
-
-<!-- Product 4 -->
-<div class="product-card">
-    <div class="product-image-container">
-        <img src="product4.1.png" alt="Product 4 Front" class="product-front">
-        <img src="product4.2.png" alt="Product 4 Back" class="product-back">
-    </div>
-    <h3>BUNNY HOODIE</h3>
-    <p class="price">$80.00</p>
-    <p class="product-summary">A revolutionary product for advanced users.</p>
-    <a href="product4.html" class="btn">View Details</a>
-</div>
-
-<script>
-function addToCart(name, price, image) {}
-    let size = document.getElementById('size').value; // Get selected size
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    cart.push({ name, price, image, size }); // Add size property
-    localStorage.setItem('cart', JSON.stringify(cart));
-</script>
 
     <!-- Footer -->
     <footer>
@@ -229,53 +233,30 @@ function addToCart(name, price, image) {}
     </footer>
 
     <script>
-let currentIndex = 0;
-const images = document.querySelectorAll('.carousel-image');
-const totalImages = images.length;
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-image');
+        const totalImages = images.length;
 
-function showNextImage() {
-    if (currentIndex < totalImages - 1) {
-        currentIndex++;
-        updateCarousel();
-    }
-}
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        }
 
-function showPrevImage() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-    }
-}
+        function showPrevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        }
 
-function updateCarousel() {
-    const offset = -currentIndex * 100; // Move the images horizontally
-    document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
-}
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+        }
 
-// Disable buttons at boundaries
-function updateButtons() {
-    document.getElementById('prevBtn').disabled = currentIndex === 0;
-    document.getElementById('nextBtn').disabled = currentIndex === totalImages - 1;
-}
+        document.getElementById('nextBtn').addEventListener('click', showNextImage);
+        document.getElementById('prevBtn').addEventListener('click', showPrevImage);
 
-// Hook into existing updateCarousel to also update buttons
-function updateCarouselWithButtons() {
-    updateCarousel();
-    updateButtons();
-}
-
-document.getElementById('nextBtn').addEventListener('click', () => {
-    showNextImage();
-    updateButtons();
-});
-
-document.getElementById('prevBtn').addEventListener('click', () => {
-    showPrevImage();
-    updateButtons();
-});
-
-// Initialize button states
-updateButtons();
+        // Auto-play functionality
+        setInterval(showNextImage, 3000); // Change image every 3 seconds
 
     </script>
 
