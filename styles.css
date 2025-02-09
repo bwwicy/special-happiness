@@ -347,7 +347,7 @@ footer p {
     font-weight: 600;
     color: #131313;
     font-size: 18px;
-    padding-bottom: 5px; /* Space for underline */
+    padding-bottom: 3px; /* Space for underline */
 }
 
 .nav-link::after {
