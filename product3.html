@@ -96,6 +96,26 @@
 .dropdown-menu:hover {
     display: block;
 }
+.dropdown {
+    position: relative;
+    z-index: 1000; /* Ensures the dropdown is on the top layer */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Keep the dropdown above other content */
+}
+
     </style>
 </head>
 <body>
@@ -115,7 +135,7 @@
                         <li><a href="product3.html">TOO MUCH TO THINK HOODIE</a></li>
                         <li><a href="product4.html">BUNNY HOODIE</a></li>
                     </ul>
-                </li> 
+                </li>
                 <li><a href="about.html" class="nav-link">ABOUT</a></li>
                 <li><a href="contact.html" class="nav-link">CONTACT</a></li>
             </ul>
