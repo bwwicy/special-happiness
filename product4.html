@@ -101,6 +101,49 @@
             text-decoration: none;
             font-weight: bold;
         }
+        /* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+    z-index: 1000; /* Ensures the dropdown is on the top layer */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Keep the dropdown above other content */
+}
+
+/* Dropdown links styling */
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #00e5b7;
+    border-radius: 5px;
+}
+
+/* Ensure dropdown stays open when hovering over it */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+}
     </style>
 </head>
 <body>
