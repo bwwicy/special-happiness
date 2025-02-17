@@ -8,6 +8,74 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="tabthing.ico" type="png">
     <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: #131313;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 0 20px;
+        }
+
+        #navbar__logo {
+            color: #fff;
+            font-size: 2rem;
+            text-decoration: none;
+        }
+
+        .navbar__menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+
+        .navbar__item {
+            margin: 0 15px;
+        }
+
+        .navbar__links {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar__links:hover {
+            color: #f77062;
+            transition: all 0.3s ease;
+        }
+
+        .navbar__toggle {
+            display: none;
+        }
+
+        .navbar__btn {
+            margin-left: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #f77062;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #b721ff;
+            transition: all 0.3s ease;
+        }
+
         /* Carousel Styles */
         .carousel-container {
             position: relative;
@@ -19,14 +87,12 @@
 
         .carousel-images {
             display: flex;
-            transition: transform 0.5s ease; /* Smooth transition effect */
-            width: 100%;
+            transition: transform 0.5s ease;
         }
 
         .carousel-image {
-            min-width: 100%; /* Ensure each image takes full width */
+            min-width: 100%;
             height: auto;
-            object-fit: cover;
         }
 
         .carousel-btns {
@@ -47,62 +113,30 @@
             font-size: 20px;
         }
 
-        /* Navigation Links Styling */
-        nav ul {
-            list-style-type: none;
-            display: flex;
-            justify-content: center;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            font-weight: 600;
-            color: #fff;
-            font-size: 18px;
-        }
-
-        /* Product Listing Styles */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .product-listings h2 {
+        /* Product Styles */
+        .product-listings {
             text-align: center;
-            font-size: 2em;
-            margin-bottom: 20px;
+            margin: 40px 0;
         }
 
         .products {
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 20px;
-            justify-content: center;
         }
 
         .product-card {
             border: 1px solid #ddd;
+            width: 230px;
             padding: 20px;
             text-align: center;
-            width: 230px;
             box-sizing: border-box;
         }
 
-        .product-image-container {
-            position: relative;
-        }
-
-        .product-front,
-        .product-back {
+        .product-front, .product-back {
             width: 100%;
             height: auto;
-            display: block;
         }
 
         .product-summary {
@@ -116,601 +150,166 @@
             color: #333;
         }
 
-        .btn {
-            background-color: #2bd890;
-            color: white;
-            padding: 10px 15px;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            background-color: #00e5b7;
-        }
-
-        /* Footer */
+        /* Footer Styles */
         footer {
             text-align: center;
             padding: 20px;
             background-color: #333;
             color: white;
         }
-/* Dropdown Menu Styles */
-.dropdown {
-    position: relative;
-    z-index: 1000; /* Ensures the dropdown is on the top layer */
-}
 
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: #333;
-    padding: 10px 0;
-    list-style: none;
-    margin: 0;
-    top: 100%;
-    left: 0;
-    width: 200px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Keep the dropdown above other content */
-}
+        /* Responsive Styles */
+        @media screen and (max-width: 960px) {
+            .navbar__menu {
+                display: none;
+                flex-direction: column;
+                background: #131313;
+                width: 100%;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                opacity: 0;
+                z-index: -1;
+            }
 
-/* Dropdown links styling */
-.dropdown-menu li {
-    padding: 10px 20px;
-}
+            .navbar__menu.active {
+                display: flex;
+                opacity: 1;
+                z-index: 1;
+            }
 
-.dropdown-menu li a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
-}
+            .navbar__toggle {
+                display: block;
+                cursor: pointer;
+            }
 
-.dropdown-menu li a:hover {
-    background-color: #00c6ff;
-    border-radius: 5px;
-}
-
-/* Ensure dropdown stays open when hovering over it */
-.dropdown:hover .dropdown-menu,
-.dropdown-menu:hover {
-    display: block;
-}
-.social__icon--link {
-    color: #fff;
-    font-size: 24px;
-}
-
-.social__media {
-    max-width: 1000px;
-    width: 100%;
-}
-
-.social__media--wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 1000px;
-    margin: 40px auto 0 auto;
-}
-
-.social__icons {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 240px;
-}
-
-.social__logo {
-    color: #fff;
-    justify-self: flex-start;
-    margin-left: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.website__rights {
-    color: #fff;
-}
-
-@media screen and (max-width: 820px) {
-    .footer__links {
-        padding-top: 2rem;
-    }
-
-    #footer__logo {
-        margin-bottom: 2rem;
-    }
-
-    .website__rights {
-        margin-bottom: 2rem;
-    }
-
-    .footer__link--wrapper {
-        flex-direction: column;
-    }
-
-    .social__media--wrap {
-        flex-direction: column;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .foooter__link--items {
-        margin: 0;
-        padding: 10px;
-        width: 100%;
-    }
-}
-.navbar {
-    background: #131313;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    position: sticky;
-    top: 0;
-    z-index: 999;
-}
-
-.navbar__container {
-    display: flex;
-    justify-content: space-between;
-    height: 80px;
-    z-index: 1;
-    width: 100%;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 50px;
-}
-
-#navbar__logo {
-    background-color: #ff8177;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
-}
-
-.fa-gem {
-    margin-right: 0.5rem;
-}
-
-.navbar__menu {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    text-align: center;
-}
-
-.navbar__item {
-    height: 80px;
-}
-
-.navbar__links {
-    color: #fff;
-    display: flex;
-    align-items: baseline;
-    padding: 0 1rem;
-    width: 100%;
-    text-decoration: none;
-    margin: 15px; 
-}
-
-.navbar__btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 1rem;
-    width: 100%;
-}
-
-.button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    padding: 10px 20px;
-    height: 100%;
-    width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    background: #f77062;
-    color: #fff;
-}
-
-.button:hover {
-    background: linear-gradient(to top, #b721ff 0%, #21d4fd 100%);
-    transition: all 0.3s ease;
-}
-
-.navbar__links:hover {
-    color: #f77062;
-    transition: all 0.3s ease;
-}
-
-@media screen and (max-width: 960px) {
-    .navbar__container {
-        display: flex;
-        justify-content: space-between;
-        height: 80px;
-        z-index: 1;
-        width: 100%;
-        max-width: 1300px;
-        padding: 0;
-    }
-
-    .navbar__menu {
-        display: flex;
-        flex-direction: column; 
-        margin: 0;
-        width: 100%;
-        position: absolute;
-        top: -1000px;
-        opacity: 0;
-        transition: all 0.5s ease;
-        height: 50vh;
-        z-index: -1;
-        background: #131313;
-    }
-
-    .navbar__menu.active {
-        top: 100%;
-        opacity: 1;
-        transition: all 0.5s ease;
-        z-index: 99;
-        height: 50vh;
-        font-size: 1.6rem;
-    }
-
-    #navbar__logo {
-        padding-left: 25px;
-    }
-
-    .navbar__toggle .bar {
-        width: 25px;
-        height: 3px;
-        margin: 5px auto;
-        transition: all 0.3s ease-in-out;
-        background: #fff;
-    }
-
-    .navbar__item {
-        width: 100%;
-        text-align: center; 
-    }
-
-    .navbar__links {
-        text-align: center;
-        padding: 1rem;
-        width: 100%;
-        display: flex; 
-        flex-direction: column; 
-        justify-content: space-evenly; 
-        text-decoration: none; 
-        margin: 0;
-    }
-
-    .navbar__links a { 
-        text-decoration: none; 
-        color: white; 
-    }
-
-    #mobile-menu {
-        position: absolute;
-        top: 20%;
-        right: 5%;
-        transform: translate(5%, 20%);
-    }
-
-    .navbar__btn {
-        padding-bottom: 2rem;
-    }
-
-    .button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        height: 80px;
-        margin: 0;
-    }
-
-    .navbar__toggle .bar {
-        display: block;
-        cursor: pointer;
-    }
-
-    #mobile-menu.is-active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    #mobile-menu.is-active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    #mobile-menu.is-active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-}
-.navbar__menu.active {
-        top: 100%;
-        opacity: 1;
-        transition: all 0.5s ease;
-        z-index: 99;
-        height: 50vh;
-        font-size: 1.6rem;
-    }
-
-    #navbar__logo {
-        padding-left: 25px;
-    }
-
-    .navbar__toggle .bar {
-        width: 25px;
-        height: 3px;
-        margin: 5px auto;
-        transition: all 0.3s ease-in-out;
-        background: #fff;
-    }
-
-    .navbar__item {
-        width: 100%;
-        text-align: center; 
-    }
-
-    .navbar__links {
-        text-align: center;
-        padding: 1rem;
-        width: 100%;
-        display: flex; 
-        flex-direction: column; 
-        justify-content: space-evenly; 
-        text-decoration: none; 
-        margin: 0;
-    }
-
-    .navbar__links a { 
-        text-decoration: none; 
-        color: white; 
-    }
-
-    #mobile-menu {
-        position: absolute;
-        top: 20%;
-        right: 5%;
-        transform: translate(5%, 20%);
-    }
-
-    .navbar__btn {
-        padding-bottom: 2rem;
-    }
-
-    .button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        height: 80px;
-        margin: 0;
-    }
-
-    .navbar__toggle .bar {
-        display: block;
-        cursor: pointer;
-    }
-
-    #mobile-menu.is-active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    #mobile-menu.is-active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    #mobile-menu.is-active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
+            .navbar__toggle .bar {
+                width: 25px;
+                height: 3px;
+                margin: 5px auto;
+                background: #fff;
+            }
+        }
 
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo-container">
-            <a href="index.html"><img src="logo.png" alt="Product Store Logo" class="logo"></a>
+<!-- Header Section -->
+<header>
+    <div class="navbar">
+        <a href="index.html" id="navbar__logo">HENDASSA</a>
+        <div class="navbar__toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="nav-link">HOME</a></li>
-                <li class="dropdown">
-                    <a href="products.html" class="nav-link">PRODUCTS</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="product1.html">BE UR SELF HOODIE</a></li>
-                        <li><a href="product2.html">RISE AND SHINE HOODIE</a></li>
-                        <li><a href="product3.html">TOO MUCH TO THINK HOODIE</a></li>
-                        <li><a href="product4.html">BUNNY HOODIE</a></li>
-                    </ul>
-                </li>
-                <li><a href="about.html" class="nav-link">ABOUT</a></li>
-                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
-            </ul>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar__menu">
-               <li class="navbar__item">
-                <a href="/" class="navbar__links">Not Home</a>
-               </li> 
-               <li class="navbar__item">
-                <a href="nottech.html" class="navbar__links">Not tech</a>
-               </li> 
-               <li class="navbar__item">
-                <a href="notproducts.html" class="navbar__links">Not Products </a>
-               </li>
-               <li class="navbar__btn">
-                <a href="signup.html" class="button">Sign up</a> 
-            </li>
-            <li class="navbar__btn">
-             <a href="signin.html" class="button">Sign In</a> 
-            </li>
-            </ul>
-        </div>
-        </nav>
-    </header>
+        <ul class="navbar__menu">
+            <li class="navbar__item"><a href="index.html" class="navbar__links">HOME</a></li>
+            <li class="navbar__item"><a href="products.html" class="navbar__links">PRODUCTS</a></li>
+            <li class="navbar__item"><a href="about.html" class="navbar__links">ABOUT</a></li>
+            <li class="navbar__item"><a href="contact.html" class="navbar__links">CONTACT</a></li>
+            <li class="navbar__btn"><a href="signup.html" class="button">Sign Up</a></li>
+            <li class="navbar__btn"><a href="signin.html" class="button">Sign In</a></li>
+        </ul>
+    </div>
+</header>
 
-    <!-- Carousel Section -->
-    <div class="carousel-container">
-        <div class="carousel-images">
-            <img src="product1.3.png" alt="Product 1" class="carousel-image">
-            <img src="product2.1.png" alt="Product 2" class="carousel-image">
-            <img src="product3.2.png" alt="Product 3" class="carousel-image">
-            <img src="product4.3.png" alt="Product 4" class="carousel-image">
+<!-- Carousel Section -->
+<div class="carousel-container">
+    <div class="carousel-images">
+        <img src="product1.3.png" alt="Product 1" class="carousel-image">
+        <img src="product2.1.png" alt="Product 2" class="carousel-image">
+        <img src="product3.2.png" alt="Product 3" class="carousel-image">
+        <img src="product4.3.png" alt="Product 4" class="carousel-image">
+    </div>
+    <div class="carousel-btns">
+        <button class="carousel-btn" id="prevBtn">&#10094;</button>
+        <button class="carousel-btn" id="nextBtn">&#10095;</button>
+    </div>
+</div>
+
+<!-- Products Listing -->
+<div class="product-listings">
+    <h2>Our Products</h2>
+    <div class="products">
+        <!-- Product 1 -->
+        <div class="product-card">
+            <img src="product1.2.png" alt="Product 1" class="product-front">
+            <h3>BE UR SELF HOODIE</h3>
+            <p class="price">$50.00</p>
+            <p class="product-summary">This is a great product for daily use.</p>
+            <a href="product1.html" class="button">View Details</a>
         </div>
-        <div class="carousel-btns">
-            <button class="carousel-btn" id="prevBtn">&#10094;</button>
-            <button class="carousel-btn" id="nextBtn">&#10095;</button>
+        <!-- Product 2 -->
+        <div class="product-card">
+            <img src="product2.4.png" alt="Product 2" class="product-front">
+            <h3>RISE AND SHINE HOODIE</h3>
+            <p class="price">$50.00</p>
+            <p class="product-summary">A premium quality product that stands out.</p>
+            <a href="product2.html" class="button">View Details</a>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-card">
+            <img src="product3.2.png" alt="Product 3" class="product-front">
+            <h3>TOO MUCH TO THINK HOODIE</h3>
+            <p class="price">$50.00</p>
+            <p class="product-summary">This high-end product is made for excellence.</p>
+            <a href="product3.html" class="button">View Details</a>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-card">
+            <img src="product4.1.png" alt="Product 4" class="product-front">
+            <h3>BUNNY HOODIE</h3>
+            <p class="price">$80.00</p>
+            <p class="product-summary">A revolutionary product for advanced users.</p>
+            <a href="product4.html" class="button">View Details</a>
         </div>
     </div>
+</div>
 
-    <!-- Products Listing -->
-    <div class="container">
-        <section class="product-listings">
-            <h2>Our Products</h2>
-            <div class="products">
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="product1.2.png" alt="Product 1 Front" class="product-front">
-                        <img src="product1.1.png" alt="Product 1 Back" class="product-back">
-                    </div>
-                    <h3>BE UR SELF HOODIE</h3>
-                    <p class="price">$50.00</p>
-                    <p class="product-summary">This is a great product for daily use.</p>
-                    <a href="product1.html" class="btn">View Details</a>
-                </div>
+<!-- Footer Section -->
+<footer>
+    <p>© 2025 HENDASSA. All Rights Reserved.</p>
+</footer>
 
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="product2.4.png" alt="Product 2 Front" class="product-front">
-                        <img src="product2.1.png" alt="Product 2 Back" class="product-back">
-                    </div>
-                    <h3>RISE AND SHINE HOODIE</h3>
-                    <p class="price">$50.00</p>
-                    <p class="product-summary">A premium quality product that stands out.</p>
-                    <a href="product2.html" class="btn">View Details</a>
-                </div>
+<!-- JavaScript Section -->
+<script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navbarMenu = document.querySelector('.navbar__menu');
+    
+    mobileMenu.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+        mobileMenu.classList.toggle('is-active');
+    });
 
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="product3.2.png" alt="Product 3 Front" class="product-front">
-                        <img src="product3.1.png" alt="Product 3 Back" class="product-back">
-                    </div>
-                    <h3>TOO MUCH TO THINK HOODIE</h3>
-                    <p class="price">$50.00</p>
-                    <p class="product-summary">This high-end product is made for excellence.</p>
-                    <a href="product3.html" class="btn">View Details</a>
-                </div>
+    // Carousel functionality
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carousel-image');
+    const totalImages = images.length;
 
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image-container">
-                        <img src="product4.1.png" alt="Product 4 Front" class="product-front">
-                        <img src="product4.2.png" alt="Product 4 Back" class="product-back">
-                    </div>
-                    <h3>BUNNY HOODIE</h3>
-                    <p class="price">$80.00</p>
-                    <p class="product-summary">A revolutionary product for advanced users.</p>
-                    <a href="product4.html" class="btn">View Details</a>
-                </div>
-            </div>
-        </section>
-    </div>
+    function showNextImage() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateCarousel();
+    }
 
-    <!-- Footer -->
-    <div class="footer__container">
-        <div class="footer__links">
-            <div class="footer__link--wrapper">
-               <div class="footer__link--items">
-             </div>
-        </div>
-        <div class="social__media">
-            <div class="social__media--wrap">
-                <div class="footer__logo">
-                    <a href="/" id="footer__logo"><i class="fas 
-                        faa-gem"></i>HENDASSA</a>
-                </div>
+    function showPrevImage() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        updateCarousel();
+    }
 
-                    <a href="/" class="social__icon--link" target="www.facebook.com">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a hSref="/" class="social__icon--link" target="www.instagram.com">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="/" class="social__icon--link" target="www.x.com">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="/" class="social__icon--link" target="www.youtube.com">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="/" class="social__icon--link" target="www.linkedin.com">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+    function updateCarousel() {
+        const offset = -currentIndex * 100;
+        document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+    }
 
-    <script>
-        let currentIndex = 0;
-        const images = document.querySelectorAll('.carousel-image');
-        const totalImages = images.length;
+    document.getElementById('nextBtn').addEventListener('click', showNextImage);
+    document.getElementById('prevBtn').addEventListener('click', showPrevImage);
 
-        function showNextImage() {
-            currentIndex = (currentIndex + 1) % totalImages;
-            updateCarousel();
-        }
-
-        function showPrevImage() {
-            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-            updateCarousel();
-        }
-
-        function updateCarousel() {
-            const offset = -currentIndex * 100;
-            document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
-        }
-
-        document.getElementById('nextBtn').addEventListener('click', showNextImage);
-        document.getElementById('prevBtn').addEventListener('click', showPrevImage);
-
-        // Auto-play functionality
-        setInterval(showNextImage, 3000); // Change image every 3 seconds
-
-    </script>
+    // Auto-play functionality
+    setInterval(showNextImage, 3000);
+</script>
 
 </body>
 </html>
