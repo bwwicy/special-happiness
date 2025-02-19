@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONYX PANTS | HENDASSA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="tabthing.ico" type="image/x-icon">
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            white-space: nowrap;
+            width: 400%; /* Ensures all images fit in a row */
+        }
+
+        .carousel-images img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            object-fit: cover;
+            flex: 0 0 100%;
+        }
+
+        .carousel-btns {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .product-details {
+            margin-top: 20px;
+        }
+
+        .size-selector {
+            margin-top: 10px;
+        }
+
+        .btn {
+            background-color: #71d2a6;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #34e294;
+        }
+
+        header {
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            max-width: 150px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+        /* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+    z-index: 1000; /* Ensures the dropdown is on the top layer */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Keep the dropdown above other content */
+}
+
+/* Dropdown links styling */
+.dropdown-menu li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #00c6ff;
+    border-radius: 5px;
+}
+
+/* Ensure dropdown stays open when hovering over it */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <a href="index.html"><img src="logo.png" alt="Product Store Logo" class="logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li class="dropdown">
+                    <a href="products.html" class="nav-link">PRODUCTS</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="product1.html">BE UR SELF HOODIE</a></li>
+                        <li><a href="product2.html">RISE AND SHINE HOODIE</a></li>
+                        <li><a href="product3.html">TOO MUCH TO THINK HOODIE</a></li>
+                        <li><a href="product4.html">BUNNY HOODIE</a></li>
+                        <li><a href="product5.html">ONYX PANTS</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html" class="nav-link">ABOUT</a></li>
+                <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>ONYX PANTS</h1>
+        <p class="price">$80.00</p>
+
+        <!-- Carousel -->
+        <div class="carousel-container">
+            <div class="carousel-images">
+                <img src="product5.1.png" alt="Product 5 Image 1">
+                <img src="product5.2.png" alt="Product 5 Image 2">
+                <img src="product5.3.png" alt="Product 5 Image 3">
+                <img src="product5.4.png" alt="Product 5 Image 4">
+            </div>
+            <div class="carousel-btns">
+                <button class="carousel-btn" id="prevBtn">&#10094;</button>
+                <button class="carousel-btn" id="nextBtn">&#10095;</button>
+            </div>
+        </div>
+                     
+        <!-- Product Details -->
+        <div class="product-details">
+            <p>A great product for daily use with high-quality materials.</p>
+
+            <!-- Size Selector -->
+            <label for="size">Choose Size:</label>
+            <select id="size" class="size-selector">
+                <option value="S">Small</option>
+                <option value="M">Medium</option>
+                <option value="L">Large</option>
+                <option value="XL">Extra Large</option>
+            </select>
+
+            <!-- Buy Now Button -->
+            <a href="javascript:void(0);" class="btn" onclick="addToCart()">Buy Now</a>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelector('.carousel-images');
+        const totalImages = images.children.length;
+
+        function showNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        }
+
+        function showPrevImage() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            images.style.transform = `translateX(${offset}%)`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', showNextImage);
+        document.getElementById('prevBtn').addEventListener('click', showPrevImage);
+
+        function addToCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let selectedSize = document.getElementById('size').value;
+            let productImageSrc = images.children[currentIndex].src;
+
+            cart.push({ name: 'BUNNY HOODIE', price: 80.00, size: selectedSize, image: productImageSrc });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>
