@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUNNY HOODIE | HENDASSA</title>
+    <title>TOO MUCH TO THINK HOODIE | HENDASSA</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="tabthing.ico" type="image/x-icon">
+    <link rel="icon" href="tabthing.ico" type="image/png">
     <style>
         .container {
             max-width: 800px;
@@ -25,8 +25,6 @@
         .carousel-images {
             display: flex;
             transition: transform 0.5s ease-in-out;
-            white-space: nowrap;
-            width: 400%; /* Ensures all images fit in a row */
         }
 
         .carousel-images img {
@@ -34,7 +32,6 @@
             max-width: 600px;
             height: auto;
             object-fit: cover;
-            flex: 0 0 100%;
         }
 
         .carousel-btns {
@@ -64,7 +61,7 @@
         }
 
         .btn {
-            background-color: #71d2a6;
+            background-color: #4de9a5;
             color: white;
             padding: 10px 15px;
             text-decoration: none;
@@ -75,54 +72,9 @@
         }
 
         .btn:hover {
-            background-color: #34e294;
+            background-color: #50c9b9;
         }
-
-        header {
-            text-align: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            max-width: 150px;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            font-weight: bold;
-        }
-        /* Dropdown Menu Styles */
-.dropdown {
-    position: relative;
-    z-index: 1000; /* Ensures the dropdown is on the top layer */
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: #333;
-    padding: 10px 0;
-    list-style: none;
-    margin: 0;
-    top: 100%;
-    left: 0;
-    width: 200px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000; /* Keep the dropdown above other content */
-}
-
-/* Dropdown links styling */
+        /* Dropdown links styling */
 .dropdown-menu li {
     padding: 10px 20px;
 }
@@ -144,6 +96,26 @@
 .dropdown-menu:hover {
     display: block;
 }
+.dropdown {
+    position: relative;
+    z-index: 1000; /* Ensures the dropdown is on the top layer */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    padding: 10px 0;
+    list-style: none;
+    margin: 0;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Keep the dropdown above other content */
+}
+
     </style>
 </head>
 <body>
@@ -177,17 +149,17 @@
         <!-- Carousel -->
         <div class="carousel-container">
             <div class="carousel-images">
-                <img src="product4.1.png" alt="Product 4 Image 1">
-                <img src="product4.2.png" alt="Product 4 Image 2">
-                <img src="product4.3.png" alt="Product 4 Image 3">
-                <img src="product4.4.png" alt="Product 4 Image 4">
+                <img src="product4.1.png" alt="Product 3 Image 1">
+                <img src="product4.2.png" alt="Product 3 Image 2">
+                <img src="product4.3.png" alt="Product 3 Image 3">
+                <img src="product4.4.png" alt="Product 3 Image 4">
             </div>
             <div class="carousel-btns">
                 <button class="carousel-btn" id="prevBtn">&#10094;</button>
                 <button class="carousel-btn" id="nextBtn">&#10095;</button>
             </div>
         </div>
-                     
+
         <!-- Product Details -->
         <div class="product-details">
             <p>A great product for daily use with high-quality materials.</p>
@@ -202,7 +174,7 @@
             </select>
 
             <!-- Buy Now Button -->
-            <a href="javascript:void(0);" class="btn" onclick="addToCart()">Buy Now</a>
+            <button class="btn" onclick="addToCart()">Buy Now</button>
         </div>
     </div>
 
@@ -234,7 +206,7 @@
             let selectedSize = document.getElementById('size').value;
             let productImageSrc = images.children[currentIndex].src;
 
-            cart.push({ name: 'BUNNY HOODIE', price: 80.00, size: selectedSize, image: productImageSrc });
+            cart.push({ name: 'BUNNY HODDIE', price: 80.00, size: selectedSize, image: productImageSrc });
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'cart.html';
         }
