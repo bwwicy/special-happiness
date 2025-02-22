@@ -217,7 +217,7 @@
             let selectedSize = document.getElementById('size').value;
             let productImageSrc = images.children[currentIndex].src;
 
-            cart.push({ name: 'ONYX PANTS', price: 80.00, size: selectedSize, image: productImageSrc });
+            cart.push({ name: 'ONYX HOODIE', price: 80.00, size: selectedSize, image: productImageSrc });
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'cart.html';
         }
